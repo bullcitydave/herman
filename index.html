@@ -10,14 +10,24 @@ display: none;
 height: 80%;
 }
 .gallery-cell {
-  transition: opacity 0.4s;
+  transition: opacity 0.7s;
 }
 .gallery-cell:not(.is-selected) {
-  opacity: 0.2;
+  opacity: 0.3;
 }
+
+  .gallery-cell img
+  {
+
+    width: 400px;
+  }
+
+
+@media (min-width: 768px) {
 .gallery-cell img
  {
    height: 100%;
+   width: auto;
 }
 header {
   text-align: center;
