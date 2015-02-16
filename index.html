@@ -60,9 +60,28 @@ header {
 <meta property="og:image" content="http://bullcitydave.github.io/herman/images/Herman%20Top%20-%2000.jpg"/>
 <meta property="og:site_name" content="bullcitydave on github"/>
 <meta property="og:description" content="Herman page created with flickity library; possibe prototype for pet profile website">
+<meta property="fb:app_id content="571166326354217"/>
+
 </head>
 <html>
 <body style="background:#fff">
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '571166326354217',
+        xfbml      : true,
+        version    : 'v2.2'
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 <header>
   <h1>Herman</h1>
   <h3>2000 - 2014</h3>
@@ -94,6 +113,12 @@ header {
 
 </div>
 
+<div
+class="fb-like"
+data-share="true"
+data-width="450"
+data-show-faces="true">
+</div>
 </body>
 
 <script>
@@ -109,6 +134,8 @@ $(function galleryInit() {
     imagesLoaded: true
   });
 });
+
+
 
 
 </script>
