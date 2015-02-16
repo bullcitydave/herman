@@ -7,7 +7,7 @@
 <style>
 #main-gallery {
 display: none;
-height: 80%;
+height: 70%;
 }
 .gallery-cell {
   transition: opacity 0.7s;
@@ -23,14 +23,26 @@ height: 80%;
   }
 
 
+
+h1 {
+  font-size: 4.0em;
+}
+h3 {
+  font-size: 2.5em;
+}
+
+
 @media (min-width: 768px) {
 .gallery-cell img
- {
+  {
    height: 100%;
    width: auto;
+ }
 }
+
 header {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 
@@ -43,11 +55,30 @@ header {
   <h3>2000 - 2014</h3>
 </header>
 <div id="main-gallery">
-  <div class="gallery-cell"><img src="images/tfss-1a431899-7915-4315-ab6f-908203b3f181-2493428429_2266145d2d_o.jpg"></div>
-  <div class="gallery-cell"><img src="images/5431615801_c267c0507c_o.jpg"></div>
-  <div class="gallery-cell"><img src="images/5874486707_fae54744da_o.jpg"></div>
-  <div class="gallery-cell"><img src="images/5651490493_5a099d53e3_b.jpg"></div>
-  <div class="gallery-cell"><img src="images/2700704198_f00c66ca72_o.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2001.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2002.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2003.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2004.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2005.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2006.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2007.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2008.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2009.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2010.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2011.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2012.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2013.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2014.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2015.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2016.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2017.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2018.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2019.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2020.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2021.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2022.jpg"></div>
+  <div class="gallery-cell"><img src="images/Herman%20Top%20-%2023.jpg"></div>
+
 </div>
 
 </body>
@@ -61,7 +92,8 @@ $(function galleryInit() {
     freeScroll: false,
     contain: true,
     wrapAround: true,
-    setGallerySize: false
+    setGallerySize: false,
+    imagesLoaded: true
   });
 });
 
