@@ -1,0 +1,103 @@
+<head>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/flickity.css">
+<script src="scripts/underscore.js"></script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/flickity.pkgd.min.js"></script>
+<style>
+#main-gallery {
+display: none;
+height: 70%;
+}
+.gallery-cell {
+  transition: opacity 0.8s;
+  height: 500px;
+}
+.gallery-cell:not(.is-selected) {
+  opacity: 0.1;
+}
+
+  .gallery-cell img
+  {
+
+    width: 400px;
+  }
+
+
+header {
+  color: #111;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 700;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 2.5em;
+  font-weight: 100;
+}
+
+
+@media (min-width: 768px) {
+.gallery-cell img
+  {
+   height: 100%;
+   width: auto;
+ }
+}
+
+header {
+  text-align: center;
+  margin: 20px;
+  letter-spacing: 2px;
+}
+
+input#tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 200px;
+  padding: 20px;
+  font-weight: bold;
+  margin: 20px;
+  color: lightgray;
+}
+
+
+</style>
+
+<meta property="og:title" content="Herman - 2000-2014"/>
+<meta property="og:image" content="http://bullcitydave.github.io/herman/images/Herman%20Top%20-%2000.jpg"/>
+<meta property="og:site_name" content="bullcitydave on github"/>
+<meta property="og:description" content="Herman page created with flickity library; possibe prototype for pet profile website"/>
+<meta property="fb:app_id content="571166326354217"/>
+
+</head>
+<html>
+<body style="background:#fff">
+
+<header>
+  <h1>Herman</h1>
+  <h3>2000 - 2014</h3>
+</header>
+<div id="main-gallery">
+
+</div>
+<input id="tag" placeholder="Enter Flickr tag" name="tag"/>
+<script type="text/template" id="flickr-template">
+  <div class="gallery-cell"><img src="<%-flickrImg %>"></div>
+</script>
+
+
+
+<script>
+
+</script>
+
+<script src="scripts/flickr.js"></script>
+
+
+</html>
