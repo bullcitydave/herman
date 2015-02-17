@@ -7,21 +7,37 @@ var flickrApiUrl =  "https://api.flickr.com/services/rest/?method=flickr.photos.
 
 var $gallery = $('#main-gallery');
 
-$(function galleryInit() {
-  $gallery.css('display','block').flickity({
-    // options
-    cellAlign: 'center',
-    freeScroll: false,
-    contain: true,
-    wrapAround: true,
-    setGallerySize: false,
-    imagesLoaded: true,
-    percentPosition: false
-  });
-});
+// $(function galleryInit() {
+//   $gallery.css('display','block').flickity({
+//     // options
+//     cellAlign: 'center',
+//     freeScroll: false,
+//     contain: true,
+//     wrapAround: true,
+//     setGallerySize: false,
+//     imagesLoaded: true,
+//     percentPosition: false
+//   });
+// });
+function Promise(fn) {
+  var callback = null;
+  this.then = function(cb) {
+    callback = cb;
+  };
 
+  function resolve(value) {
+    // force callback to be called in the next
+    // iteration of the event loop, giving
+    // callback a chance to be set by then()
+    setTimeout(function() {
+      callback(value);
+    }, 1);
+  }
 
-var getGallery = function (tag) {
+  fn(resolve);
+}
+
+function getGallery(tag) {
     $.getJSON(flickrApiUrl + "&format=json&nojsoncallback=1").done(function(photoData){
       flickrLength = Math.min(photoData.photos.photo.length,15);
       var flickrView = $('#flickr-template').html();
@@ -30,8 +46,6 @@ var getGallery = function (tag) {
       var farmId='';
       var serverId ='';
       var secret='';
-
-
 
       for (var i = 0; i < flickrLength ; i++) {
         if (!photoData.photos.photo[i]) {
@@ -47,11 +61,33 @@ var getGallery = function (tag) {
         $('#main-gallery').append(_.template(flickrView,({"flickrImg":flickrImg})));
         // $('#main-gallery').flickity('append' , (_.template(flickrView,({"flickrImg":flickrImg}))));
       }
+
       cells = $('.gallery-cell');
       _.each(cells, function(cell) {
         $('#main-gallery').flickity( 'append',  cell );
       })
-      $gallery.flickity('reloadCells');
-      return $('.gallery-cell').length;
-    });
-}
+    })
+      return new Promise(function(resolve) {
+            resolve();
+          }
+      );
+    }
+
+
+getGallery(flickrTag).then(function() {
+
+  $gallery.css('display','block').flickity({
+    // options
+    cellAlign: 'center',
+    freeScroll: false,
+    contain: true,
+    wrapAround: true,
+    setGallerySize: false,
+    imagesLoaded: true,
+    percentPosition: false
+  });
+
+
+
+
+})
