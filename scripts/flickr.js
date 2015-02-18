@@ -1,7 +1,7 @@
 var flickrApiKey = "806745a8a5db2aff0b0cdb591b633726";
 var flickrUserId = 'toastie97';
 
-
+var isFlickity = false;
 
 
 var $gallery = $('#main-gallery');
@@ -14,6 +14,13 @@ var $gallery = $('#main-gallery');
 
 
 var getGallery = function (tag) {
+  if ( isFlickity ) {
+    // destroy Flickity
+    $gallery.flickity('destroy');
+    $('.gallery-cell').remove()
+  }
+
+
   var flickrApiUrl =  "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrApiKey + "&user_id=toastie97&tags=" + tag +"&per_page=16&page=1&format=json&nojsoncallback=1";
 
     return $.getJSON(flickrApiUrl + "&format=json&nojsoncallback=1").done(function(photoData){
@@ -47,20 +54,18 @@ var getGallery = function (tag) {
       //   $('#main-gallery').flickity( 'append',  cell );
       // })
     }).then(function() {
-      var r = confirm("Click to continue");
-      if (r == true) {
-      $gallery.css('display','block').flickity({
-        // options
-        cellAlign: 'center',
-        freeScroll: false,
-        contain: true,
-        wrapAround: true,
-        setGallerySize: false,
-        imagesLoaded: true,
-        percentPosition: false
-      });
-    }
-    });
+          $gallery.css('display','block').flickity({
+            // options
+            cellAlign: 'center',
+            freeScroll: false,
+            contain: true,
+            wrapAround: true,
+            setGallerySize: false,
+            imagesLoaded: true,
+            percentPosition: false
+          });
+          isFlickity = true;
+     });
 }
 
 $('input[id=tag]').on('keypress', function(e) {
