@@ -5,7 +5,7 @@ var flickrUserId = 'toastie97';
 
 
 var $gallery = $('#main-gallery');
-// 
+//
 // $(function galleryInit() {
 //   $gallery.flickity({
 //     // options
@@ -39,6 +39,7 @@ var getGallery = function (tag) {
         flickrUrl = 'https://www.flickr.com/photos/' + flickrUserId + '/' + photoId + '/';
         // console.log('Rendering Flickr image: ',flickrImg);
         $('#main-gallery').append(_.template(flickrView,({"flickrImg":flickrImg})));
+        console.log($('.gallery-cell').length);
         // $('#main-gallery').flickity('append' , (_.template(flickrView,({"flickrImg":flickrImg}))));
       }
       // cells = $('.gallery-cell');
@@ -46,16 +47,24 @@ var getGallery = function (tag) {
       //   $('#main-gallery').flickity( 'append',  cell );
       // })
     }).then(function() {
-      console.log($('.gallery-cell').length);
-      // $gallery.css('display','block').flickity({
-      //   // options
-      //   cellAlign: 'center',
-      //   freeScroll: false,
-      //   contain: true,
-      //   wrapAround: true,
-      //   setGallerySize: false,
-      //   // imagesLoaded: true,
-      //   percentPosition: false
-      // });
+      var r = confirm("Click to continue");
+      if (r == true) {
+      $gallery.css('display','block').flickity({
+        // options
+        cellAlign: 'center',
+        freeScroll: false,
+        contain: true,
+        wrapAround: true,
+        setGallerySize: false,
+        imagesLoaded: true,
+        percentPosition: false
+      });
+    }
     });
 }
+
+$('input[id=tag]').on('keypress', function(e) {
+  if (e.keyCode == 13) {
+    getGallery($('input[id=tag]').val());
+  }
+})
